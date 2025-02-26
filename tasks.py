@@ -40,9 +40,21 @@ raw.set_montage(montage)
 # A WARMUP: GETTING TO KNOW OUR DATA
 def info_warmup(raw):
     #Print raw info
+    info = raw.info
+    print(info)
     #Print sampling frequency, channel names, channel types
+    print(f'Sampling Frequency: {info['sfreq']} Channel Names : {info['ch_names']} Channel Types : {raw.get_channel_types()}')
     #Print raw annotations and its duratinons, onsets and types
-    
+    annotations = raw.annotations
+    print(f'Durations : {annotations.duration} Onsets: {annotations.onset} Descriptions: {annotations.description}')
+    #Their meaning: According to documentation https://physionet.org/content/eegmmidb/1.0.0/
+    #T0 corresponds to rest
+#T1 corresponds to onset of motion (real or imagined) of
+#the left fist (in runs 3, 4, 7, 8, 11, and 12)
+#both fists (in runs 5, 6, 9, 10, 13, and 14)
+#T2 corresponds to onset of motion (real or imagined) of
+#the right fist (in runs 3, 4, 7, 8, 11, and 12)
+#both feet (in runs 5, 6, 9, 10, 13, and 14)
     return 
 
 def visual_warmup(raw):
