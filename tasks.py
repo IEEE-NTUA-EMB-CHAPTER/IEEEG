@@ -59,27 +59,16 @@ def event_warmup(raw):
     return events,event_dict
 
 def preprocessing(raw):
-    #Visualize artifacts (eye blinks, heartbeat, bad channels, drifts, line noise)
-    #Filter artifacts
+    #Select only channels C3, C4
+    #High-pass channels with cutoff frequency 1Hz
+    #Notch filted data with central frequency 50 or 60 Hz depending on the line noise (see psd to understand which one)
     return raw_filtered
 
-def our_ica(raw_filtered):
-    #Preprocess and perform ica
-    #Visualize sources/generators
-    return sources
-
-def segment_data(data):
-    #Segment right/left hand movements into epochs
-    #Visualize image, together, topomap
+def segment_data(raw_filtered):
+    #Segment right/left hand movements into epochs. Choose the correct tmax and tmin in order to capture the movement
+    #Visualize image, joint, topomap
     #Segment idle state into epochs
-    #Visualize -//-
-
+    #Visualize image, joint, topomap
     #Perform psd and visualize for both. What are the differences?
-
-    #IF POSSIBLE visualize topomap of mu rhythm
-    return segmented_data
-
-def feature_design(data):
-    #Create a training set, a test set
-    #Compute psd on every epoch and extract mean values (and other features) for each frequency band
-    return  X_train, y_train, X_test, y_test
+    #IF POSSIBLE visualize topomap of mu rhythm (8-12Hz)
+    return epochs
